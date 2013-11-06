@@ -18,7 +18,3 @@ References
 * Pywinauto - https://code.google.com/p/pywinauto/
 * Flask - http://flask.pocoo.org/
 * Pingom - https://www.pingdom.com/
-
-TODO:
------
-AWS SNS alternative to Pingdom
