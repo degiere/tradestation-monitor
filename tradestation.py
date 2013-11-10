@@ -19,12 +19,17 @@ def connect():
 # <Disconnected> You are disconnected from the trade server. - offline
 # <Connected> SIMULATED ACCT: Connected to trade server - simulator
 # <Connected> LIVE:  Connected to trade server - live
-# TODO: hack! wasn't immediately obvious: better way to get this window or text directly?
+# Note: there are other entries for orders, track these
+# TODO: hack! wasn't immediately obvious: better way to get this window directly?
 def live():
     app = connect()
     wins = app.Windows_()
     for win in wins:
         text = ''.join(win.Texts())
-        if "LIVE" in text:
-            return True
-    return False
+        if "SIMULATED ACCT" in text or "<Disconnected>" in text or "<Failed to Send>" in text:
+            return False
+    return True
+
+
+def status_bar():
+    return connect().Window_()['StatusBar']
